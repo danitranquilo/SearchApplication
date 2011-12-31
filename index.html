@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>New Document</title>            
+		<script src="jquery.js"></script>
+		<script type="text/coffeescript">   
+                
+clickSearch = -> 
+    $("#content").html("")
+    
+    $.ajax
+        async:true
+        url:"google.php"
+        type:"GET"
+        data: "question=" + $("#input").val()
+        timeout: 5000
+        success: (data) -> 
+            $("<div></div>").html(data).find("#res .r a").each(->
+                $("#content").append($("<div></div>").html($(this)))
+            )
+
+    $.ajax
+        async:true
+        url:"bing.php"
+        type:"GET"
+        data: "question=" + $("#input").val()  
+        timeout: 100
+        success: (data) -> 
+            $("<div></div>").html(data).find("#results .sb_tlst a").each(->
+                $("#content").append($("<div></div>").html($(this)))
+            )
+                
+    $.ajax
+        async:true
+        url:"yahoo.php"
+        type:"GET"
+        data: "question=" + $("#input").val()
+        timeout: 100
+        success: (data) -> 
+            $("<div></div>").html(data).find("#web .yschttl").each(->
+                $("#content").append($("<div></div>").html($(this)))
+            )
+    false
+
+$("#search").click(clickSearch)
+		</script>
+
+        <script src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"> </script>
+
+    </head>
+    <body>
+        <form method="POST" id="form1">
+            <table>
+                <tr>
+                    <td><input type="text" name="input" id="input"></td>
+                    <td><input type="submit" id ="search" value="Search"></td>
+                </tr>
+            </table>
+        </form>
+        <div id="content"></div>
+    </body>
+</html>
+
+
+
+

@@ -1,0 +1,23 @@
+Project developed by Daniele Tranquilo (danitranquilo@gmail.com)
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Project description:
+
+You have to create a search application that uses Yahoo, Bing, and Google to make the search. The application has to make 3 parallel calls to Yahoo, Google, Bing  for a search terms and return the results.
+The calls to these search providers have to be asynchronous. Each provider has 100ms to return results.
+After the time out (100ms) is hit, the application should return the collected results to the user. If any search providers fails to return the result within the set period of time you, ignore that provider and show the results for the providers who returned a result. i.e. If only Yahoo and Bing return a result within 100ms then show only those two and ignore Google.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+How was developed:
+
+To create the form, HTML was used.
+The business rule was developed using CoffeeScript using the compiler in real time on: http://coffeescript.org/extras/coffee-script.js
+For parallel and asynchronous calls on these search providers was used Ajax.
+To support Ajax was used jQuery in CoffeeScript.
+PHP was used to "trick" Ajax calls that did not work for different servers.
+The calls to the search providers was done using a concatenation of string to your URL.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+Requirements:
+
+A server to run PHP.
