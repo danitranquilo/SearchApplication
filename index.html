@@ -12,7 +12,7 @@ clickSearch = ->
         url:"google.php"
         type:"GET"
         data: "question=" + $("#input").val()
-        timeout: 5000
+        timeout: 100
         success: (data) -> 
             $("<div></div>").html(data).find("#res .r a").each(->
                 $("#content").append($("<div></div>").html($(this)))
